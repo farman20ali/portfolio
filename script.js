@@ -73,6 +73,7 @@ if (hero && bannerImg) {
 // HEADER SCROLL EFFECT
 // ========================================
 const header = document.querySelector('.site-header');
+const scrollDownArrow = document.querySelector('.scroll-down-arrow');
 let lastScroll = 0;
 
 window.addEventListener('scroll', () => {
@@ -80,8 +81,16 @@ window.addEventListener('scroll', () => {
   
   if (currentScroll > 100) {
     header.classList.add('scrolled');
+    // Hide scroll down arrow when scrolling down
+    if (scrollDownArrow) {
+      scrollDownArrow.classList.add('hidden');
+    }
   } else {
     header.classList.remove('scrolled');
+    // Show scroll down arrow when at top
+    if (scrollDownArrow) {
+      scrollDownArrow.classList.remove('hidden');
+    }
   }
   
   lastScroll = currentScroll;
