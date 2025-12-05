@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Farman Ali Ujjan — Senior Software Engineer</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="site-header">
+    <nav class="nav">
+      <div class="brand">
+        <span class="brand-name">Farman Ali Ujjan</span>
+        <span class="brand-title">Senior Software Engineer</span>
+      </div>
+
+      <div class="nav-right">
+        <div class="socials">
+          <a href="https://github.com/farman20ali" aria-label="GitHub" target="_blank" rel="noopener" class="social-link">
+            <img src="assets/github.png" alt="GitHub" />
+          </a>
+          <a href="https://linkedin.com/in/farman20ali" aria-label="LinkedIn" target="_blank" rel="noopener" class="social-link">
+            <img src="assets/linkedin.png" alt="LinkedIn" />
+          </a>
+          <a href="mailto:farman20ali@gmail.com" aria-label="Email" class="social-link">
+            <img src="assets/email.png" alt="Email" />
+          </a>
+        </div>
+
+        <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
+          <span class="theme-icon">🌙</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO BANNER -->
+  <section class="hero" id="hero">
+    <div class="banner-wrapper">
+      <img src="assets/banner.png" class="banner-img" alt="Banner" loading="lazy" />
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <!-- ABOUT -->
+    <section id="about" class="content-section about scroll-reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Introduction</span>
+          <h2 class="section-title">About Me</h2>
+        </div>
+        <div class="about-content">
+          <p class="lead-text">
+            I am a <strong>Senior Software Engineer</strong> specializing in distributed systems and FinTech.
+            I design and build high-performance microservices, event-driven pipelines (Kafka),
+            and low-latency payment systems.
+          </p>
+          <p>
+            At Bank Al Habib I worked on <strong>20+ REST microservices</strong>
+            and payment APIs handling <strong>1M+ daily transactions</strong>, improved backend latency by <strong>40%</strong>,
+            and reduced MTTR by <strong>45%</strong> through observability (ELK).
+          </p>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-number">20+</div>
+              <div class="stat-label">Microservices</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">1M+</div>
+              <div class="stat-label">Daily Transactions</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">40%</div>
+              <div class="stat-label">Latency Improvement</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">45%</div>
+              <div class="stat-label">MTTR Reduction</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="content-section skills scroll-reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Expertise</span>
+          <h2 class="section-title">Technical Skills</h2>
+        </div>
+        <div class="skill-grid">
+          <div class="skill-card" style="animation-delay: 0s;">
+            <div class="skill-icon">
+              <img src="assets/skills/java.png" alt="Java"/>
+            </div>
+            <span class="skill-name">Java</span>
+            <span class="skill-desc">Quarkus/Spring</span>
+          </div>
+          <div class="skill-card" style="animation-delay: 0.05s;">
+            <div class="skill-icon">
+              <img src="assets/skills/python.png" alt="Python"/>
+            </div>
+            <span class="skill-name">Python</span>
+            <span class="skill-desc">Flask</span>
+          </div>
+          <div class="skill-card" style="animation-delay: 0.1s;">
+            <div class="skill-icon">
+              <img src="assets/skills/kafka.png" alt="Kafka"/>
+            </div>
+            <span class="skill-name">Apache Kafka</span>
+            <span class="skill-desc">Event Streaming</span>
+          </div>
+          <div class="skill-card" style="animation-delay: 0.15s;">
+            <div class="skill-icon">
+              <img src="assets/skills/redis.png" alt="Redis"/>
+            </div>
+            <span class="skill-name">Redis</span>
+            <span class="skill-desc">Caching</span>
+          </div>
+          <div class="skill-card" style="animation-delay: 0.2s;">
+            <div class="skill-icon">
+              <img src="assets/skills/docker.png" alt="Docker"/>
+            </div>
+            <span class="skill-name">Docker</span>
+            <span class="skill-desc">Jenkins CI/CD</span>
+          </div>
+          <div class="skill-card" style="animation-delay: 0.25s;">
+            <div class="skill-icon">
+              <img src="assets/skills/postgres.png" alt="Postgres"/>
+            </div>
+            <span class="skill-name">PostgreSQL</span>
+            <span class="skill-desc">Database</span>
+          </div>
+          <div class="skill-card" style="animation-delay: 0.3s;">
+            <div class="skill-icon">
+              <img src="assets/skills/elk.png" alt="ELK"/>
+            </div>
+            <span class="skill-name">ELK Stack</span>
+            <span class="skill-desc">Observability</span>
+          </div>
+          <div class="skill-card" style="animation-delay: 0.35s;">
+            <div class="skill-icon">
+              <img src="assets/skills/microservices.png" alt="Microservices"/>
+            </div>
+            <span class="skill-name">Microservices</span>
+            <span class="skill-desc">Architecture</span>
+          </div>
+          <div class="skill-card" style="animation-delay: 0.4s;">
+            <div class="skill-icon">
+              <img src="assets/skills/systemdesign.png" alt="System Design"/>
+            </div>
+            <span class="skill-name">System Design</span>
+            <span class="skill-desc">Scalability</span>
+          </div>
+          <div class="skill-card" style="animation-delay: 0.45s;">
+            <div class="skill-icon">
+              <img src="assets/skills/react.png" alt="React"/>
+            </div>
+            <span class="skill-name">React / Vue</span>
+            <span class="skill-desc">Frontend</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="content-section projects scroll-reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Portfolio</span>
+          <h2 class="section-title">Highlighted Projects</h2>
+        </div>
+
+        <div class="project-list">
+          <article class="project-card">
+            <div class="project-header">
+              <div class="project-icon">🚗</div>
+              <h3 class="project-title">Accident Reporting System</h3>
+            </div>
+            <p class="project-description">
+              Offline-first mobile platform with LLM-based chatbot, PostGIS analytics and DBSCAN clustering. 
+              Achieved <strong>86.7% accuracy</strong> with <strong>&lt;1s response time</strong>.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Mobile</span>
+              <span class="tag">LLM</span>
+              <span class="tag">PostGIS</span>
+              <span class="tag">ML</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-header">
+              <div class="project-icon">⚡</div>
+              <h3 class="project-title">Enterprise Service Management</h3>
+            </div>
+            <p class="project-description">
+              Quarkus-based microservices template, Kafka & Redis pipelines, async processing (Uni/Mutiny). 
+              Reduced response time by <strong>40%</strong>.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Quarkus</span>
+              <span class="tag">Kafka</span>
+              <span class="tag">Redis</span>
+              <span class="tag">Async</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-header">
+              <div class="project-icon">📊</div>
+              <h3 class="project-title">IT Ops Dashboards</h3>
+            </div>
+            <p class="project-description">
+              Centralized ELK dashboards for logs & metrics, reducing incident detection and resolution time by <strong>45%</strong>.
+            </p>
+            <div class="project-tags">
+              <span class="tag">ELK</span>
+              <span class="tag">Monitoring</span>
+              <span class="tag">DevOps</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <h3>Farman Ali Ujjan</h3>
+          <p>Senior Software Engineer</p>
+        </div>
+        <div class="footer-socials">
+          <a href="https://github.com/farman20ali" aria-label="GitHub" target="_blank" rel="noopener" class="social-link">
+            <img src="assets/github.png" alt="GitHub" />
+          </a>
+          <a href="https://linkedin.com/in/farman20ali" aria-label="LinkedIn" target="_blank" rel="noopener" class="social-link">
+            <img src="assets/linkedin.png" alt="LinkedIn" />
+          </a>
+          <a href="mailto:farman20ali@gmail.com" aria-label="Email" class="social-link">
+            <img src="assets/email.png" alt="Email" />
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Farman Ali Ujjan — All Rights Reserved</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
