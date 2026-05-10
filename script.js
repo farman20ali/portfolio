@@ -190,7 +190,8 @@ if (canvas) {
     shootingStars = Array.from({ length: 4 }, makeShootingStar);
   }
 
-  function drawNebulae() {
+  function drawNebulae(isDark) {
+    if (!isDark) return;
     nebulae.forEach(n => {
       const gx = n.x * width  + mouseX * 0.3;
       const gy = n.y * height + mouseY * 0.3;
@@ -206,18 +207,39 @@ if (canvas) {
     });
   }
 
+  function drawSunGlow(isDark) {
+    if (isDark) return;
+    const sunX = width * 0.82;
+    const sunY = height * 0.22;
+    const sunR = Math.max(width, height) * 0.35;
+    const glow = ctx.createRadialGradient(sunX, sunY, 0, sunX, sunY, sunR);
+    glow.addColorStop(0, 'rgba(255, 233, 180, 0.55)');
+    glow.addColorStop(0.35, 'rgba(255, 225, 170, 0.25)');
+    glow.addColorStop(0.7, 'rgba(255, 215, 160, 0.08)');
+    glow.addColorStop(1, 'rgba(255, 200, 150, 0)');
+    ctx.fillStyle = glow;
+    ctx.fillRect(0, 0, width, height);
+  }
+
   let tick = 0;
   function animate() {
     tick++;
-    // Space-dark background
+    const isDark = document.body.classList.contains('dark');
     const bgGrad = ctx.createLinearGradient(0, 0, 0, height);
-    bgGrad.addColorStop(0,   '#020408');
-    bgGrad.addColorStop(0.5, '#050c18');
-    bgGrad.addColorStop(1,   '#030810');
+    if (isDark) {
+      bgGrad.addColorStop(0,   '#020408');
+      bgGrad.addColorStop(0.5, '#050c18');
+      bgGrad.addColorStop(1,   '#030810');
+    } else {
+      bgGrad.addColorStop(0,   '#f8fafc');
+      bgGrad.addColorStop(0.5, '#eef2f7');
+      bgGrad.addColorStop(1,   '#e2e8f0');
+    }
     ctx.fillStyle = bgGrad;
     ctx.fillRect(0, 0, width, height);
 
-    drawNebulae();
+    drawSunGlow(isDark);
+    drawNebulae(isDark);
 
     // Draw & update stars
     stars.forEach(s => {
@@ -227,7 +249,9 @@ if (canvas) {
       const py = s.y + mouseY * s.parallax * 20;
       ctx.beginPath();
       ctx.arc(px, py, s.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${s.color[0]},${s.color[1]},${s.color[2]},${alpha})`;
+      const starAlphaScale = isDark ? 1 : 0.35;
+      const starColor = isDark ? s.color : [70, 90, 130];
+      ctx.fillStyle = `rgba(${starColor[0]},${starColor[1]},${starColor[2]},${alpha * starAlphaScale})`;
       ctx.fill();
       // Slow drift upward
       s.y -= s.speed;
@@ -247,13 +271,14 @@ if (canvas) {
         ss.x - ss.vx * (ss.len / ss.speed),
         ss.y - ss.vy * (ss.len / ss.speed)
       );
-      grad.addColorStop(0, `rgba(255,255,255,${ss.alpha})`);
-      grad.addColorStop(1, `rgba(180,200,255,0)`);
+      const headAlpha = isDark ? ss.alpha : ss.alpha * 0.55;
+      grad.addColorStop(0, `rgba(255,255,255,${headAlpha})`);
+      grad.addColorStop(1, isDark ? 'rgba(180,200,255,0)' : 'rgba(255,200,150,0)');
       ctx.beginPath();
       ctx.moveTo(ss.x, ss.y);
       ctx.lineTo(ss.x - ss.vx * (ss.len / ss.speed), ss.y - ss.vy * (ss.len / ss.speed));
       ctx.strokeStyle = grad;
-      ctx.lineWidth = 1.5;
+      ctx.lineWidth = isDark ? 1.5 : 1.1;
       ctx.stroke();
       ss.x += ss.vx;
       ss.y += ss.vy;
@@ -558,30 +583,47 @@ if (mobileMenuBtn && navLinks) {
 }
 
 // ========================================
-// TERMINAL ANIMATION
+// TERMINAL LIVE TYPING
 // ========================================
 const terminalBody = document.getElementById('terminal-body');
 if (terminalBody) {
-  const terminalObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const lines = terminalBody.querySelectorAll('.terminal-output, .terminal-line.hidden');
-        let delay = 1000;
-        
-        lines.forEach((line, index) => {
-          setTimeout(() => {
-            line.classList.remove('hidden');
-          }, delay);
-          // add random variance to terminal output
-          delay += Math.random() * 400 + 400; 
-        });
-        
-        terminalObserver.disconnect();
+  const typingTarget = terminalBody.querySelector('.typing-live');
+  const commands = [
+    'tail -f service.log',
+    'git status',
+    'kubectl get pods',
+    'curl /health',
+  ];
+
+  if (typingTarget) {
+    let cmdIdx = 0;
+    let charIdx = 0;
+    let deleting = false;
+    const TYPE_SPEED = 60;
+    const DELETE_SPEED = 35;
+    const HOLD = 1400;
+
+    const tick = () => {
+      const text = commands[cmdIdx];
+      if (!deleting) {
+        typingTarget.textContent = text.slice(0, ++charIdx);
+        if (charIdx === text.length) {
+          deleting = true;
+          setTimeout(tick, HOLD);
+          return;
+        }
+      } else {
+        typingTarget.textContent = text.slice(0, --charIdx);
+        if (charIdx === 0) {
+          deleting = false;
+          cmdIdx = (cmdIdx + 1) % commands.length;
+        }
       }
-    });
-  }, { threshold: 0.5 });
-  
-  terminalObserver.observe(terminalBody);
+      setTimeout(tick, deleting ? DELETE_SPEED : TYPE_SPEED);
+    };
+
+    setTimeout(tick, 800);
+  }
 }
 
 // ========================================
