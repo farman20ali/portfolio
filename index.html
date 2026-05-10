@@ -21,19 +21,53 @@
   <meta name="twitter:description" content="Senior Software Engineer specializing in distributed systems, FinTech, and microservices architecture." />
   <meta name="twitter:image" content="https://farman20ali.github.io/portfolio/assets/banner.png" />
   
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=6" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- SEO Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Farman Ali Ujjan",
+    "jobTitle": "Senior Software Engineer",
+    "url": "https://farman20ali.github.io/portfolio/",
+    "sameAs": [
+      "https://linkedin.com/in/farman20ali",
+      "https://github.com/farman20ali"
+    ],
+    "knowsAbout": ["Java", "Python", "Microservices", "Distributed Systems", "Kafka", "PostgreSQL", "Quarkus"]
+  }
+  </script>
 </head>
 <body>
+  <!-- SCROLL PROGRESS BAR -->
+  <div id="scroll-progress"></div>
+  <!-- FULL-PAGE SPACE BACKGROUND -->
+  <canvas id="bg-canvas"></canvas>
+  <!-- MOBILE MENU OVERLAY -->
+  <div id="nav-overlay"></div>
 
   <!-- NAV -->
   <header class="site-header">
     <nav class="nav">
-      <div class="brand">
-        <span class="brand-name">Farman Ali Ujjan</span>
-        <span class="brand-title">Senior Software Engineer</span>
+      <a href="#hero" class="brand" style="text-decoration: none;">
+        <img src="assets/profile.jpg" alt="Farman Ali Ujjan" class="brand-img" onerror="this.style.display='none'" />
+        <div class="brand-text">
+          <span class="brand-name">Farman Ali Ujjan</span>
+          <span class="brand-title">Software Engineer</span>
+        </div>
+      </a>
+
+      <div class="nav-links">
+        <a href="#about" class="nav-link magnetic-btn">About</a>
+        <a href="#experience" class="nav-link magnetic-btn">Experience</a>
+        <a href="#projects" class="nav-link magnetic-btn">Projects</a>
+        <a href="#skills" class="nav-link magnetic-btn">Skills</a>
+        <a href="#education" class="nav-link magnetic-btn">Education</a>
+        <a href="#contact" class="nav-link magnetic-btn">Contact</a>
       </div>
 
       <div class="nav-right">
@@ -52,14 +86,40 @@
         <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
           <span class="theme-icon">🌙</span>
         </button>
+        
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </nav>
   </header>
 
-  <!-- HERO BANNER -->
+  <!-- HERO SECTION -->
   <section class="hero" id="hero">
-    <div class="banner-wrapper">
-      <img src="assets/banner.png" class="banner-img" alt="Banner" loading="lazy" />
+    <canvas id="hero-canvas"></canvas>
+    <div class="container hero-container">
+      <div class="hero-content fade-in">
+        <div class="hero-badge">Available for opportunities</div>
+        <h1 class="hero-title">Farman Ali <span class="text-gradient">Ujjan</span></h1>
+        <h2 class="hero-subtitle"><span id="typewriter"></span><span class="typewriter-cursor">|</span></h2>
+        <p class="hero-description">
+          Building scalable, high-throughput backend systems for digital banking.
+          Specializing in Java microservices, event-driven architectures (Kafka), and
+          low-latency transaction processing serving 1M+ users.
+        </p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary magnetic-btn">View Projects</a>
+          <a href="#contact" class="btn btn-secondary magnetic-btn">Contact Me</a>
+        </div>
+      </div>
+      
+      <div class="hero-image-wrapper fade-in-delay">
+        <div class="hero-image-glow"></div>
+        <!-- Note: Ensure you place a profile.jpg in the assets folder -->
+        <img src="assets/profile.jpg" alt="Farman Ali Ujjan" class="hero-profile-img" onerror="this.src='assets/github.png'; this.classList.add('fallback-img');" />
+      </div>
     </div>
     <a href="#about" class="scroll-down-arrow" aria-label="Scroll down">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -77,116 +137,165 @@
           <span class="section-tag">Introduction</span>
           <h2 class="section-title">About Me</h2>
         </div>
-        <div class="about-content">
+        <div class="about-terminal tilt-card" style="max-width: 800px; margin: 0 auto 4rem auto;">
+          <div class="terminal-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="terminal-title">guest@farman-server:~</span>
+          </div>
+          <div class="terminal-body" id="terminal-body">
+            <div class="terminal-line"><span class="terminal-prompt">$</span> <span class="typing-text">./start-backend.sh</span></div>
+            <div class="terminal-output hidden">Booting production systems...</div>
+            <div class="terminal-output hidden">[OK] Java Microservices loaded (Quarkus)</div>
+            <div class="terminal-output hidden">[OK] Connected to PostgreSQL DB</div>
+            <div class="terminal-output hidden">[OK] Kafka Event Streams active</div>
+            <div class="terminal-output hidden">[OK] Redis cache ready (latency: 2ms)</div>
+            <div class="terminal-output success hidden">System listening on port 8080. Ready to scale.</div>
+            <div class="terminal-line hidden"><span class="terminal-prompt">$</span> <span class="cursor-blink">_</span></div>
+          </div>
+        </div>
+
+        <div class="about-content text-center">
           <p class="lead-text">
-            I am a <strong>Senior Software Engineer</strong> specializing in distributed systems and FinTech.
-            I design and build high-performance microservices, event-driven pipelines (Kafka),
-            and low-latency payment systems.
+            I am a <strong>Software Engineer</strong> with 3+ years of experience building scalable, high-throughput systems for FinTech and digital banking.
           </p>
           <p>
-            At Bank Al Habib I worked on <strong>20+ REST microservices</strong>
-            and payment APIs handling <strong>1M+ daily transactions</strong>, improved backend latency by <strong>40%</strong>,
-            and reduced MTTR by <strong>45%</strong> through observability (ELK).
+            At Bank Al Habib, I specialize in <strong>Java microservices (Quarkus, Spring Boot)</strong> and event-driven architectures using <strong>Apache Kafka</strong>. My work focuses on real-time payment infrastructure, transaction processing, and observability platforms at production scale. I successfully reduced API response times from ~300ms to ~20ms, enhancing system stability and user experience for over 1M+ users. With an MS in Computer Science (CGPA: 3.89) and a background in Petroleum Engineering, I bring strong analytical and system-level thinking to complex engineering problems.
           </p>
           <div class="stats-grid">
-            <div class="stat-card">
-              <div class="stat-number">20+</div>
-              <div class="stat-label">Microservices</div>
+            <div class="stat-card tilt-card">
+              <div class="stat-number">3+</div>
+              <div class="stat-label">Years Experience</div>
             </div>
-            <div class="stat-card">
+            <div class="stat-card tilt-card">
               <div class="stat-number">1M+</div>
-              <div class="stat-label">Daily Transactions</div>
+              <div class="stat-label">Active Users Served</div>
             </div>
-            <div class="stat-card">
-              <div class="stat-number">40%</div>
+            <div class="stat-card tilt-card">
+              <div class="stat-number">15x</div>
               <div class="stat-label">Latency Improvement</div>
             </div>
-            <div class="stat-card">
-              <div class="stat-number">45%</div>
-              <div class="stat-label">MTTR Reduction</div>
+            <div class="stat-card tilt-card">
+              <div class="stat-number">20+</div>
+              <div class="stat-label">Microservices Built</div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SKILLS -->
-    <section id="skills" class="content-section skills scroll-reveal">
+    <!-- ENGINEERING PHILOSOPHY -->
+    <section id="philosophy" class="content-section scroll-reveal" style="background: rgba(0,0,0,0.02); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border);">
       <div class="container">
         <div class="section-header">
-          <span class="section-tag">Expertise</span>
-          <h2 class="section-title">Technical Skills</h2>
+          <span class="section-tag">Core Tenets</span>
+          <h2 class="section-title">Engineering Philosophy</h2>
         </div>
-        <div class="skill-grid">
-          <div class="skill-card" style="animation-delay: 0s;">
-            <div class="skill-icon">
-              <img src="assets/skills/java.png" alt="Java"/>
-            </div>
-            <span class="skill-name">Java</span>
-            <span class="skill-desc">Quarkus/Spring</span>
+        <div class="philosophy-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+          <div class="philosophy-card tilt-card" style="background: var(--glass-bg); padding: 2.5rem; border-radius: var(--radius-lg); border: 1px solid var(--glass-border);">
+            <div class="philosophy-icon" style="font-size: 2.5rem; margin-bottom: 1rem;">🚀</div>
+            <h3 style="margin-bottom: 1rem;">Scalability First</h3>
+            <p style="color: var(--text-muted);">Designing systems meant to scale from day one, utilizing asynchronous event-driven architectures (Kafka) and caching strategies (Redis) to support millions of concurrent users.</p>
           </div>
-          <div class="skill-card" style="animation-delay: 0.05s;">
-            <div class="skill-icon">
-              <img src="assets/skills/python.png" alt="Python"/>
-            </div>
-            <span class="skill-name">Python</span>
-            <span class="skill-desc">Flask</span>
+          <div class="philosophy-card tilt-card" style="background: var(--glass-bg); padding: 2.5rem; border-radius: var(--radius-lg); border: 1px solid var(--glass-border);">
+            <div class="philosophy-icon" style="font-size: 2.5rem; margin-bottom: 1rem;">⚡</div>
+            <h3 style="margin-bottom: 1rem;">Real-Time Processing</h3>
+            <p style="color: var(--text-muted);">Integrating event-driven workflows with payment gateways like RAAST to enable instant, secure, and reliable national payments at production scale.</p>
           </div>
-          <div class="skill-card" style="animation-delay: 0.1s;">
-            <div class="skill-icon">
-              <img src="assets/skills/kafka.png" alt="Kafka"/>
-            </div>
-            <span class="skill-name">Apache Kafka</span>
-            <span class="skill-desc">Event Streaming</span>
+          <div class="philosophy-card tilt-card" style="background: var(--glass-bg); padding: 2.5rem; border-radius: var(--radius-lg); border: 1px solid var(--glass-border);">
+            <div class="philosophy-icon" style="font-size: 2.5rem; margin-bottom: 1rem;">⚙️</div>
+            <h3 style="margin-bottom: 1rem;">Operational Excellence</h3>
+            <p style="color: var(--text-muted);">Treating deployment and monitoring as first-class citizens. Extensive use of Docker, CI/CD automation, and ELK observability to maintain 99.99% system availability.</p>
           </div>
-          <div class="skill-card" style="animation-delay: 0.15s;">
-            <div class="skill-icon">
-              <img src="assets/skills/redis.png" alt="Redis"/>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="content-section experience scroll-reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Career Journey</span>
+          <h2 class="section-title">Professional Experience</h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content tilt-card">
+              <div class="timeline-header">
+                <h3 class="timeline-title">Assistant IT Specialist</h3>
+                <span class="timeline-date">Jan 2025 – Present</span>
+              </div>
+              <h4 class="timeline-company">Bank Al Habib Ltd.</h4>
+              <ul class="timeline-list">
+                <li>Developed and maintained Java (Quarkus) microservices powering digital banking and transaction processing systems serving 1M+ users.</li>
+                <li>Reduced average API response time from <strong>~300ms to ~20ms</strong> using Redis-based caching.</li>
+                <li>Built event-driven workflows using <strong>Apache Kafka</strong> to improve system scalability and decoupling.</li>
+                <li>Contributed to the integration of the RAAST real-time payment system, enabling instant national payments.</li>
+                <li>Deployed containerized services using Docker in CI/CD environments.</li>
+              </ul>
             </div>
-            <span class="skill-name">Redis</span>
-            <span class="skill-desc">Caching</span>
           </div>
-          <div class="skill-card" style="animation-delay: 0.2s;">
-            <div class="skill-icon">
-              <img src="assets/skills/docker.png" alt="Docker"/>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content tilt-card">
+              <div class="timeline-header">
+                <h3 class="timeline-title">Senior IT Officer</h3>
+                <span class="timeline-date">Jan 2024 – Dec 2024</span>
+              </div>
+              <h4 class="timeline-company">Bank Al Habib Ltd.</h4>
+              <ul class="timeline-list">
+                <li>Configured <strong>ELK Stack</strong> dashboards and observability practices across 20+ microservices, enabling proactive failure detection and significantly reducing incident response time.</li>
+                <li>Improved system performance and stability across core banking services.</li>
+                <li>Supported migration from legacy systems to service-based architecture, reducing technical debt.</li>
+              </ul>
             </div>
-            <span class="skill-name">Docker</span>
-            <span class="skill-desc">Jenkins CI/CD</span>
           </div>
-          <div class="skill-card" style="animation-delay: 0.25s;">
-            <div class="skill-icon">
-              <img src="assets/skills/postgres.png" alt="Postgres"/>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content tilt-card">
+              <div class="timeline-header">
+                <h3 class="timeline-title">IT Officer (Software Developer)</h3>
+                <span class="timeline-date">Jan 2023 – Dec 2023</span>
+              </div>
+              <h4 class="timeline-company">Bank Al Habib Ltd.</h4>
+              <ul class="timeline-list">
+                <li>Developed backend modules for transaction processing, account operations, and validation workflows using Java microservices and REST APIs.</li>
+                <li>Optimized database queries, improving system performance and reliability.</li>
+              </ul>
             </div>
-            <span class="skill-name">PostgreSQL</span>
-            <span class="skill-desc">Database</span>
           </div>
-          <div class="skill-card" style="animation-delay: 0.3s;">
-            <div class="skill-icon">
-              <img src="assets/skills/elk.png" alt="ELK"/>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content tilt-card">
+              <div class="timeline-header">
+                <h3 class="timeline-title">IT Trainee Officer</h3>
+                <span class="timeline-date">Aug 2022 – Dec 2022</span>
+              </div>
+              <h4 class="timeline-company">Bank Al Habib Ltd.</h4>
+              <ul class="timeline-list">
+                <li>Built internal projects using Java Swing, Python, Vue.js, and Node.js; placed 2nd among 25 trainees.</li>
+                <li>Rotated across core IT domains: development, QA, infrastructure, and database management.</li>
+              </ul>
             </div>
-            <span class="skill-name">ELK Stack</span>
-            <span class="skill-desc">Observability</span>
           </div>
-          <div class="skill-card" style="animation-delay: 0.35s;">
-            <div class="skill-icon">
-              <img src="assets/skills/microservices.png" alt="Microservices"/>
+          
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content tilt-card">
+              <div class="timeline-header">
+                <h3 class="timeline-title">Petroleum Engineer (Contractual)</h3>
+                <span class="timeline-date">May 2022 – Aug 2022</span>
+              </div>
+              <h4 class="timeline-company">Mab Technology (UK)</h4>
+              <ul class="timeline-list">
+                <li>Performed reservoir engineering analysis using TNavigator and IPM Suite; contributed to carbon storage capacity calculations.</li>
+              </ul>
             </div>
-            <span class="skill-name">Microservices</span>
-            <span class="skill-desc">Architecture</span>
-          </div>
-          <div class="skill-card" style="animation-delay: 0.4s;">
-            <div class="skill-icon">
-              <img src="assets/skills/systemdesign.png" alt="System Design"/>
-            </div>
-            <span class="skill-name">System Design</span>
-            <span class="skill-desc">Scalability</span>
-          </div>
-          <div class="skill-card" style="animation-delay: 0.45s;">
-            <div class="skill-icon">
-              <img src="assets/skills/react.png" alt="React"/>
-            </div>
-            <span class="skill-name">React / Vue</span>
-            <span class="skill-desc">Frontend</span>
           </div>
         </div>
       </div>
@@ -201,54 +310,278 @@
         </div>
 
         <div class="project-list">
-          <article class="project-card">
+          <article class="project-card tilt-card">
             <div class="project-header">
-              <div class="project-icon">🚗</div>
+              <div class="project-icon">🤖</div>
               <h3 class="project-title">Accident Reporting System</h3>
             </div>
             <p class="project-description">
-              Offline-first mobile platform with LLM-based chatbot, PostGIS analytics and DBSCAN clustering. 
-              Achieved <strong>86.7% accuracy</strong> with <strong>&lt;1s response time</strong>.
+              Built an offline-first mobile reporting platform with live geolocation, media capture, and dynamic forms. Orchestrated microservices with PostGIS for geospatial analytics and DBSCAN for hotspot clustering.
+              Delivered an AI-driven multilingual GPT-based chatbot achieving <strong>86.7% accuracy</strong> with sub-1-second latency.
             </p>
             <div class="project-tags">
-              <span class="tag">Mobile</span>
-              <span class="tag">LLM</span>
-              <span class="tag">PostGIS</span>
-              <span class="tag">ML</span>
+              <span class="tag">Python (Flask)</span>
+              <span class="tag">Java (Quarkus)</span>
+              <span class="tag">PostgreSQL/PostGIS</span>
+              <span class="tag">LLM/AI</span>
+              <span class="tag">React Native</span>
             </div>
           </article>
 
-          <article class="project-card">
+          <article class="project-card tilt-card">
             <div class="project-header">
-              <div class="project-icon">⚡</div>
-              <h3 class="project-title">Enterprise Service Management</h3>
+              <div class="project-icon">⚙️</div>
+              <h3 class="project-title">Enterprise Service Management (ESM)</h3>
             </div>
             <p class="project-description">
-              Quarkus-based microservices template, Kafka & Redis pipelines, async processing (Uni/Mutiny). 
-              Reduced response time by <strong>40%</strong>.
+              Architected a Quarkus-based service layer using State Design Pattern, Redis caching, and Uni/Mutiny for async processing. Designed for reuse as a reference architecture for workflow-driven services within the team.
             </p>
             <div class="project-tags">
-              <span class="tag">Quarkus</span>
-              <span class="tag">Kafka</span>
+              <span class="tag">Java (Quarkus)</span>
+              <span class="tag">Apache Kafka</span>
               <span class="tag">Redis</span>
-              <span class="tag">Async</span>
+              <span class="tag">Microservices</span>
             </div>
           </article>
 
-          <article class="project-card">
+          <article class="project-card tilt-card">
             <div class="project-header">
-              <div class="project-icon">📊</div>
-              <h3 class="project-title">IT Ops Dashboards</h3>
+              <div class="project-icon">📈</div>
+              <h3 class="project-title">IT Ops Observability Dashboards</h3>
             </div>
             <p class="project-description">
-              Centralized ELK dashboards for logs & metrics, reducing incident detection and resolution time by <strong>45%</strong>.
+              Configured observability dashboards and structured logging on the bank’s ELK Stack across 20+ microservices, enabling real-time monitoring and faster incident response.
             </p>
             <div class="project-tags">
-              <span class="tag">ELK</span>
-              <span class="tag">Monitoring</span>
+              <span class="tag">Elasticsearch</span>
+              <span class="tag">Logstash</span>
+              <span class="tag">Kibana</span>
               <span class="tag">DevOps</span>
             </div>
           </article>
+
+          <article class="project-card tilt-card">
+            <div class="project-header">
+              <div class="project-icon">🌐</div>
+              <h3 class="project-title">NetCheck</h3>
+            </div>
+            <p class="project-description">
+              A lightweight network connectivity diagnostic utility available globally via the Snap Store. Built with Python.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Python</span>
+              <span class="tag">CLI Tooling</span>
+              <span class="tag">Snapcraft</span>
+            </div>
+            <div class="project-links mt-3" style="margin-top: 1.5rem;">
+                <a href="https://snapcraft.io/netcheck" target="_blank" class="btn btn-outline btn-sm magnetic-btn">View on Snap Store</a>
+            </div>
+          </article>
+
+          <article class="project-card tilt-card">
+            <div class="project-header">
+              <div class="project-icon">🔌</div>
+              <h3 class="project-title">kport</h3>
+            </div>
+            <p class="project-description">
+              An open-source, cross-platform CLI tool for port inspection & debugging. Docker-aware and pip-installable.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Python</span>
+              <span class="tag">Docker</span>
+              <span class="tag">Networking</span>
+            </div>
+            <div class="project-links mt-3" style="margin-top: 1.5rem;">
+                <a href="https://github.com/farman20ali/port-killer" target="_blank" class="btn btn-outline btn-sm magnetic-btn">View on GitHub</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="content-section skills scroll-reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Expertise</span>
+          <h2 class="section-title">Technical Skills & Frameworks</h2>
+        </div>
+        
+        <!-- SKILLS MARQUEE -->
+        <div class="skills-marquee-container">
+          <div class="skills-marquee">
+            <div class="marquee-content">
+              <div class="tooltip-container"><img src="assets/skills/java.png" alt="Java" class="marquee-icon" /><span class="custom-tooltip">Java</span></div>
+              <div class="tooltip-container"><img src="assets/skills/python.png" alt="Python" class="marquee-icon" /><span class="custom-tooltip">Python</span></div>
+              <div class="tooltip-container"><img src="assets/skills/kafka.png" alt="Kafka" class="marquee-icon" /><span class="custom-tooltip">Apache Kafka</span></div>
+              <div class="tooltip-container"><img src="assets/skills/redis.png" alt="Redis" class="marquee-icon" /><span class="custom-tooltip">Redis</span></div>
+              <div class="tooltip-container"><img src="assets/skills/docker.png" alt="Docker" class="marquee-icon" /><span class="custom-tooltip">Docker</span></div>
+              <div class="tooltip-container"><img src="assets/skills/postgres.png" alt="PostgreSQL" class="marquee-icon" /><span class="custom-tooltip">PostgreSQL</span></div>
+              <div class="tooltip-container"><img src="assets/skills/elk.png" alt="ELK" class="marquee-icon" /><span class="custom-tooltip">ELK Stack</span></div>
+              <div class="tooltip-container"><img src="assets/skills/microservices.png" alt="Microservices" class="marquee-icon" /><span class="custom-tooltip">Microservices</span></div>
+              <div class="tooltip-container"><img src="assets/skills/react.png" alt="React" class="marquee-icon" /><span class="custom-tooltip">React Native</span></div>
+            </div>
+            <div class="marquee-content" aria-hidden="true">
+              <div class="tooltip-container"><img src="assets/skills/java.png" alt="Java" class="marquee-icon" /><span class="custom-tooltip">Java</span></div>
+              <div class="tooltip-container"><img src="assets/skills/python.png" alt="Python" class="marquee-icon" /><span class="custom-tooltip">Python</span></div>
+              <div class="tooltip-container"><img src="assets/skills/kafka.png" alt="Kafka" class="marquee-icon" /><span class="custom-tooltip">Apache Kafka</span></div>
+              <div class="tooltip-container"><img src="assets/skills/redis.png" alt="Redis" class="marquee-icon" /><span class="custom-tooltip">Redis</span></div>
+              <div class="tooltip-container"><img src="assets/skills/docker.png" alt="Docker" class="marquee-icon" /><span class="custom-tooltip">Docker</span></div>
+              <div class="tooltip-container"><img src="assets/skills/postgres.png" alt="PostgreSQL" class="marquee-icon" /><span class="custom-tooltip">PostgreSQL</span></div>
+              <div class="tooltip-container"><img src="assets/skills/elk.png" alt="ELK" class="marquee-icon" /><span class="custom-tooltip">ELK Stack</span></div>
+              <div class="tooltip-container"><img src="assets/skills/microservices.png" alt="Microservices" class="marquee-icon" /><span class="custom-tooltip">Microservices</span></div>
+              <div class="tooltip-container"><img src="assets/skills/react.png" alt="React" class="marquee-icon" /><span class="custom-tooltip">React Native</span></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="skills-layout">
+          <div class="skill-category tilt-card">
+            <h3 class="skill-category-title">Languages</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">Java</span>
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">JavaScript / TS</span>
+              <span class="skill-tag">SQL</span>
+            </div>
+          </div>
+
+          <div class="skill-category tilt-card">
+            <h3 class="skill-category-title">Frameworks</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">Quarkus</span>
+              <span class="skill-tag">Spring Boot</span>
+              <span class="skill-tag">Flask</span>
+              <span class="skill-tag">React Native</span>
+              <span class="skill-tag">Node.js</span>
+            </div>
+          </div>
+
+          <div class="skill-category tilt-card">
+            <h3 class="skill-category-title">Architecture & System Design</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">Microservices</span>
+              <span class="skill-tag">Distributed Systems</span>
+              <span class="skill-tag">Event-Driven Architecture</span>
+              <span class="skill-tag">REST APIs / GraphQL</span>
+              <span class="skill-tag">System Design (HLD/LLD)</span>
+            </div>
+          </div>
+
+          <div class="skill-category tilt-card">
+            <h3 class="skill-category-title">Databases & Caching</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">PostgreSQL / PostGIS</span>
+              <span class="skill-tag">Redis</span>
+              <span class="skill-tag">MySQL / SQL Server</span>
+              <span class="skill-tag">MongoDB</span>
+              <span class="skill-tag">Neo4j</span>
+            </div>
+          </div>
+
+          <div class="skill-category tilt-card">
+            <h3 class="skill-category-title">Messaging & DevOps</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">Apache Kafka</span>
+              <span class="skill-tag">Docker / Swarm</span>
+              <span class="skill-tag">ELK Stack</span>
+              <span class="skill-tag">CI/CD</span>
+              <span class="skill-tag">Bash/Linux</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="content-section education scroll-reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Academic Background</span>
+          <h2 class="section-title">Education & Certifications</h2>
+        </div>
+        
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content tilt-card">
+              <div class="timeline-header">
+                <h3 class="timeline-title">Master of Science (M.S.) in Computer Science & IT</h3>
+                <span class="timeline-date">Nov 2023 – May 2025</span>
+              </div>
+              <h4 class="timeline-company">NED University of Engineering & Technology, Karachi</h4>
+              <p><strong>CGPA: 3.89 / 4.0</strong></p>
+              <p>Thesis: AI-based Accident Reporting System (Flask, React Native, Java, PostGIS, LLM - 86.7% accuracy)</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content tilt-card">
+              <div class="timeline-header">
+                <h3 class="timeline-title">Bachelor of Engineering (B.E.) in Petroleum & Natural Gas</h3>
+                <span class="timeline-date">Oct 2017 – Dec 2021</span>
+              </div>
+              <h4 class="timeline-company">Mehran University of Engineering & Technology, Jamshoro</h4>
+              <p><strong>CGPA: 3.91 / 4.0</strong></p>
+              <p>Thesis: Optimization of Gas Lift Systems in High Water-Cut Oil Wells</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="certifications-grid" style="margin-top: 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+           <div class="cert-card tilt-card">
+              <h4 style="margin-bottom: 0.5rem; font-size: 1.1rem;">Google IT Automation with Python</h4>
+              <span style="color: var(--text-muted); font-size: 0.9rem;">Coursera</span>
+           </div>
+           <div class="cert-card tilt-card">
+              <h4 style="margin-bottom: 0.5rem; font-size: 1.1rem;">Quarkus with Microprofile and Kubernetes</h4>
+              <span style="color: var(--text-muted); font-size: 0.9rem;">PRAGO</span>
+           </div>
+           <div class="cert-card tilt-card">
+              <h4 style="margin-bottom: 0.5rem; font-size: 1.1rem;">Microsoft Excel: Data Analysis and Dashboard</h4>
+              <span style="color: var(--text-muted); font-size: 0.9rem;">Udemy</span>
+           </div>
+           <div class="cert-card tilt-card">
+              <h4 style="margin-bottom: 0.5rem; font-size: 1.1rem;">Power BI: Advanced Data Transformations</h4>
+              <span style="color: var(--text-muted); font-size: 0.9rem;">Udemy</span>
+           </div>
+        </div>
+      </div>
+    </section>
+    <!-- CONTACT -->
+    <section id="contact" class="content-section contact scroll-reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Get In Touch</span>
+          <h2 class="section-title">Let's Connect</h2>
+          <p class="contact-subtitle" style="max-width: 600px; margin: 1rem auto 0; color: var(--text-secondary); font-size: 1.1rem;">I'm currently open to new opportunities, including international roles and visa sponsorship. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
+        </div>
+        
+        <div class="contact-grid">
+          <a href="mailto:farman20ali@gmail.com" class="contact-card tilt-card">
+            <div class="contact-icon-wrapper">
+              <img src="assets/email.png" alt="Email" />
+            </div>
+            <h3>Email Me</h3>
+            <p>farman20ali@gmail.com</p>
+          </a>
+          
+          <a href="https://linkedin.com/in/farman20ali" target="_blank" rel="noopener" class="contact-card tilt-card">
+            <div class="contact-icon-wrapper">
+              <img src="assets/linkedin.png" alt="LinkedIn" />
+            </div>
+            <h3>LinkedIn</h3>
+            <p>linkedin.com/in/farman20ali</p>
+          </a>
+          
+          <a href="https://github.com/farman20ali" target="_blank" rel="noopener" class="contact-card tilt-card">
+            <div class="contact-icon-wrapper">
+              <img src="assets/github.png" alt="GitHub" />
+            </div>
+            <h3>GitHub</h3>
+            <p>github.com/farman20ali</p>
+          </a>
         </div>
       </div>
     </section>
@@ -287,6 +620,6 @@
     </svg>
   </button>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=6"></script>
 </body>
 </html>
